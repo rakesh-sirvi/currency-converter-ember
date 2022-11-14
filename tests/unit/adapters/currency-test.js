@@ -1,5 +1,5 @@
 import { module, test } from 'qunit';
-import { setupTest } from 'ember-rsl/tests/helpers';
+import { setupTest } from 'ember-app/tests/helpers';
 
 module('Unit | Adapter | currency', function (hooks) {
   setupTest(hooks);

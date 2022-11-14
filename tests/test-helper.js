@@ -1,5 +1,5 @@
-import Application from 'ember-rsl/app';
-import config from 'ember-rsl/config/environment';
+import Application from 'ember-app/app';
+import config from 'ember-app/config/environment';
 import * as QUnit from 'qunit';
 import { setApplication } from '@ember/test-helpers';
 import { setup } from 'qunit-dom';

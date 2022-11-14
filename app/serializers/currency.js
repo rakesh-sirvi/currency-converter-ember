@@ -1,5 +1,5 @@
 import RESTSerializer from '@ember-data/serializer/rest';
-import currencySymbols from 'ember-rsl/utils/symbols';
+import currencySymbols from 'ember-app/utils/symbols';
 
 export default class CurrencySerializer extends RESTSerializer {
   normalizeResponse(store, model, payload, ...rest) {

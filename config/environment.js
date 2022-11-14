@@ -2,7 +2,7 @@
 
 module.exports = function (environment) {
   const ENV = {
-    modulePrefix: 'ember-rsl',
+    modulePrefix: 'ember-app',
     environment,
     rootURL: '/',
     locationType: 'history',
