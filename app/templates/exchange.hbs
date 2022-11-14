@@ -1,0 +1,54 @@
+{{page-title 'Exchange'}}
+
+<label>
+  <img src={{this.from.currency.img}} alt='flag' />
+  <select {{on 'change' this.changeFrom}}>
+    {{#each this.currencies as |currency|}}
+      <option
+        value={{currency.code}}
+        selected={{eq currency.code this.from.currency.code}}
+      >{{currency.code}} [{{currency.description}}]</option>
+    {{/each}}
+  </select>
+</label>
+
+<label>
+  <input
+    type='text'
+    value={{this.from.amount}}
+    {{on 'input' this.handleFromAmount}}
+  />
+</label>
+
+<p>1
+  {{this.from.currency.code}}
+  =
+  {{this.exchangeRate}}{{this.to.currency.code}}</p>
+
+<hr />
+
+<label>
+  <img src={{this.to.currency.img}} alt='flag' />
+  <select {{on 'change' this.changeTo}}>
+    {{#each this.currencies as |currency|}}
+      <option
+        value={{currency.code}}
+        selected={{eq currency.code this.to.currency.code}}
+      >{{currency.code}} [{{currency.description}}]</option>
+    {{/each}}
+  </select>
+</label>
+<label>
+  <input
+    type='text'
+    value={{this.to.amount}}
+    {{on 'input' this.handleToAmount}}
+  />
+</label>
+
+<p>1
+  {{this.to.currency.code}}
+  =
+  {{div 1 this.exchangeRate}}{{this.from.currency.code}}</p>
+
+{{outlet}}
