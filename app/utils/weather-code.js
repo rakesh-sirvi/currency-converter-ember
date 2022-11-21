@@ -1,0 +1,15 @@
+export const weatherMap = {
+  "Clear Sky": [0],
+  Overcast: [1, 2, 3],
+  Fog: [45, 48],
+  Drizzle: [51, 53, 55],
+  "Freezing srizzle": [56, 57],
+  Rain: [61, 63, 65],
+  "Freezing rain": [66, 67],
+  Snowfall: [71, 73, 75],
+  "Snow Grains": [77],
+  "Rain Showers": [80, 81, 82],
+  "Snow Showers": [85, 86],
+  Thuderstorm: [95],
+  "Thuderstorm with hail": [96, 99],
+};

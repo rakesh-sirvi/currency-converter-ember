@@ -1,0 +1,22 @@
+.weather {
+  float: right;
+}
+
+.weather__card {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.weather_code-img {
+  background-color: white;
+  max-width: 100px;
+  margin-right: 1rem;
+}
+
+.paramter_icon {
+  height: 2rem;
+  margin-right: 0.3rem;
+  width: 2rem;
+}
