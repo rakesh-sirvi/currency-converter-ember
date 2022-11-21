@@ -1,15 +1,15 @@
-import Component from "@glimmer/component";
-import { tracked } from "@glimmer/tracking";
+import Component from '@glimmer/component';
+import { tracked } from '@glimmer/tracking';
 
-import ENV from "ember-app/config/environment";
+import ENV from 'ember-app/config/environment';
 
-import { weatherMap } from "../utils/weather-code";
+import { weatherMap } from '../utils/weather-code';
 
-const API_ENDPOINT_FOR_LOCATION = "https://api.geoapify.com/v1/geocode/search";
+const API_ENDPOINT_FOR_LOCATION = 'https://api.geoapify.com/v1/geocode/search';
 
 const API_LOCATION_SUFFIX = `&format=json&apiKey=${ENV.GEOAPIFY_API_KEY}`;
 
-const API_ENDPOINT_FOR_WEATHER = "https://api.open-meteo.com/v1/forecast";
+const API_ENDPOINT_FOR_WEATHER = 'https://api.open-meteo.com/v1/forecast';
 
 export default class WeatherComponent extends Component {
   @tracked countryData;
@@ -33,8 +33,7 @@ export default class WeatherComponent extends Component {
 
     // If we don't get response in 10 s, some error occured
     setTimeout(() => {
-      if (this.isLoading)
-        this.couldNotFindData = true;
+      if (this.isLoading) this.couldNotFindData = true;
     }, 10000);
   }
 
@@ -53,11 +52,10 @@ export default class WeatherComponent extends Component {
     } catch (error) {
       this.locationError = error.message;
       console.log(
-        "Error occured during fetching location info: ",
+        'Error occured during fetching location info: ',
         this.locationError
       );
       this.couldNotFindData = true;
-
     }
   }
 
@@ -69,8 +67,8 @@ export default class WeatherComponent extends Component {
         }&longitude=${
           this.countryData.longitude
         }&current_weather=true&daily=sunrise,sunset&hourly=relativehumidity_2m&timezone=${this.countryData.timeZone.replace(
-          "/",
-          "%2F"
+          '/',
+          '%2F'
         )}`
       );
       const data = await queryResponse.json();
@@ -88,7 +86,7 @@ export default class WeatherComponent extends Component {
     } catch (error) {
       this.weatherError = error.message;
       console.log(
-        "Error occured during fetching weather info: ",
+        'Error occured during fetching weather info: ',
         this.weatherError
       );
       this.couldNotFindData = true;
@@ -124,7 +122,7 @@ export default class WeatherComponent extends Component {
       time = time.slice(1);
       time[0] = +time[0] % 12 || 12;
     }
-    return time.join("");
+    return time.join('');
   }
 
   /**

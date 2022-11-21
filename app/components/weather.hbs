@@ -1,7 +1,7 @@
-<div class="col-12 offset-md-7 col-md-5">
-  <div class="weather__card card card-body d-flex flex-row">
+<div class='col-12 offset-md-7 col-md-5'>
+  <div class='weather__card card card-body d-flex flex-row'>
     {{#if this.isLoading}}
-      <p class="text-center">
+      <p class='text-center'>
         {{#if this.couldNotFindData}}
           Apologies! Some error occured getting data : (
         {{else}}
@@ -9,60 +9,60 @@
         {{/if}}
       </p>
     {{else}}
-      <div class="weather__card__weather_code">
+      <div class='weather__card__weather_code'>
         <img
-          class="weather_code-img"
-          src="https://w7.pngwing.com/pngs/329/336/png-transparent-cloud-cover-weather-rain-cloudy-weather-cloud-computer-wallpaper-fictional-character.png"
-          alt="Weather Code"
+          class='weather_code-img'
+          src='https://w7.pngwing.com/pngs/329/336/png-transparent-cloud-cover-weather-rain-cloudy-weather-cloud-computer-wallpaper-fictional-character.png'
+          alt='Weather Code'
         />
       </div>
-      <div class="weather__card__weather_info">
-        <h4 class="place_name text-left">India</h4>
-        <div class="weather_data d-flex flex-wrap align-items-center">
-          <div class="weather_data__parameter d-flex align-items-start">
+      <div class='weather__card__weather_info'>
+        <h4 class='place_name text-left'>India</h4>
+        <div class='weather_data d-flex flex-wrap align-items-center'>
+          <div class='weather_data__parameter d-flex align-items-start'>
             <img
-              class="paramter_icon"
-              src="https://toppng.com/uploads/preview/cold-room-temperatures-store-at-room-temperature-ico-11569047762fy8nl6pxgn.png"
+              class='paramter_icon'
+              src='https://toppng.com/uploads/preview/cold-room-temperatures-store-at-room-temperature-ico-11569047762fy8nl6pxgn.png'
               alt={{this.weatherInfo.weather}}
             />
-            <p class="param_data me-4">{{this.weatherInfo.temp}} °C</p>
+            <p class='param_data me-4'>{{this.weatherInfo.temp}} °C</p>
           </div>
 
-          <div class="weather_data__parameter d-flex align-items-start">
+          <div class='weather_data__parameter d-flex align-items-start'>
             <img
-              class="paramter_icon"
-              src="https://i.pinimg.com/736x/04/58/97/045897378f83762064bf5618e519cf90.jpg"
-              alt=""
+              class='paramter_icon'
+              src='https://i.pinimg.com/736x/04/58/97/045897378f83762064bf5618e519cf90.jpg'
+              alt='icon'
             />
-            <p class="param_data me-4">{{this.weatherInfo.windspeed}} kmph</p>
+            <p class='param_data me-4'>{{this.weatherInfo.windspeed}} kmph</p>
           </div>
 
-          <div class="weather_data__parameter d-flex align-items-start">
+          <div class='weather_data__parameter d-flex align-items-start'>
             <img
-              class="paramter_icon"
-              src="https://www.freepnglogos.com/uploads/water-drop-png/water-drop-png-index-content-uploads-12.png"
-              alt=""
+              class='paramter_icon'
+              src='https://www.freepnglogos.com/uploads/water-drop-png/water-drop-png-index-content-uploads-12.png'
+              alt='icon'
             />
-            <p class="param_data me-4">{{this.weatherInfo.relative_humidity}}
+            <p class='param_data me-4'>{{this.weatherInfo.relative_humidity}}
               %</p>
           </div>
 
-          <div class="weather_data__parameter d-flex align-items-start">
+          <div class='weather_data__parameter d-flex align-items-start'>
             <img
-              class="paramter_icon"
-              src="https://www.clipartmax.com/png/small/217-2176076_sunrise-stroke-weather-symbol-free-icon-outline-of-a-sunset.png"
-              alt=""
+              class='paramter_icon'
+              src='https://www.clipartmax.com/png/small/217-2176076_sunrise-stroke-weather-symbol-free-icon-outline-of-a-sunset.png'
+              alt='icon'
             />
-            <p class="param_data me-4">{{this.weatherInfo.sunrise}} a.m.</p>
+            <p class='param_data me-4'>{{this.weatherInfo.sunrise}} a.m.</p>
           </div>
 
-          <div class="weather_data__parameter d-flex align-items-start">
+          <div class='weather_data__parameter d-flex align-items-start'>
             <img
-              class="paramter_icon"
-              src="https://img1.pnghut.com/24/19/21/aS29cCemX9/sunset-symbol-sunrise-icon-design-horizon.jpg"
-              alt=""
+              class='paramter_icon'
+              src='https://img1.pnghut.com/24/19/21/aS29cCemX9/sunset-symbol-sunrise-icon-design-horizon.jpg'
+              alt='icon'
             />
-            <p class="param_data me-4">{{this.weatherInfo.sunset}} p.m.</p>
+            <p class='param_data me-4'>{{this.weatherInfo.sunset}} p.m.</p>
           </div>
         </div>
       </div>
