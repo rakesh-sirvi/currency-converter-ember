@@ -1,0 +1,55 @@
+<div ...attributes>
+  <div class='card'>
+    <div class='card-header text-center'>
+      Currency Exchanger
+    </div>
+    {{#if (or this.currencyService.loading this.currencyService.errorState)}}
+      {{#if this.currencyService.loading}}
+        <LoadingSpinner class='d-flex justify-content-center my-5' />
+      {{/if}}
+      {{#if this.currencyService.errorState}}
+        <div class='d-flex justify-content-center my-5'>
+          {{this.currencyService.errorState}}
+        </div>
+      {{/if}}
+    {{else}}
+      <div class='card-body'>
+        <div class='row'>
+          <div class='col-sm-5'>
+            <CurrencyExchanger::CurrencyCard
+              @title='from'
+              @currencies={{this.currencies}}
+              @fromCurrency={{this.fromState.currency}}
+              @toCurrency={{this.toState.currency}}
+              @amount={{this.fromState.amount}}
+              @exchangeRate={{round this.exchangeRate decimals=4}}
+              @onInputChange={{this.handleFromAmount}}
+              @onSelectorChange={{this.changeFrom}}
+            />
+          </div>
+          <div
+            class='col-sm-2 d-flex align-self-center justify-content-center my-4'
+          >
+            <button
+              type='button'
+              class='btn btn-switch'
+              {{on 'click' this.switch}}
+            ></button>
+          </div>
+          <div class='col-sm-5'>
+            <CurrencyExchanger::CurrencyCard
+              @title='to'
+              @currencies={{this.currencies}}
+              @fromCurrency={{this.toState.currency}}
+              @toCurrency={{this.fromState.currency}}
+              @amount={{this.toState.amount}}
+              @exchangeRate={{round (div 1 this.exchangeRate) decimals=4}}
+              @onInputChange={{this.handleToAmount}}
+              @onSelectorChange={{this.changeTo}}
+            />
+          </div>
+        </div>
+      </div>
+    {{/if}}
+  </div>
+</div>

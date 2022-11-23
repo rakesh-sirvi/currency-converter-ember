@@ -8,7 +8,7 @@ export default class CurrencySerializer extends RESTSerializer {
       code: currency,
       rate: payload.rates[currency],
       description: currencySymbols[currency],
-      img: `https://raw.githubusercontent.com/transferwise/currency-flags/master/src/flags/${currency.toLowerCase()}.png`,
+      img: `https://raw.githubusercontent.com/transferwise/currency-flags/master/src/rectangular-flags/${currency.toLowerCase()}.png`,
     }));
 
     return super.normalizeResponse(store, model, { currencies }, ...rest);
