@@ -2,6 +2,7 @@ import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 import { inject as service } from '@ember/service';
+import { htmlSafe } from '@ember/template';
 
 import {
   celciusToFarenheit,
@@ -72,7 +73,7 @@ export default class WeatherComponent extends Component {
         temp: current_weather.temperature,
         windspeed: `${current_weather.windspeed} km/h`,
         weather: _getWeatherFromCode(current_weather.weathercode),
-        windDirectionAngle: current_weather.winddirection,
+        windDirectionAngle: htmlSafe(current_weather.winddirection),
         windDirection: _getWindDirection(current_weather.winddirection),
         sunrise: `${_getSunrise(daily.sunrise)} a.m.`,
         sunset: `${_getSunSet(daily.sunset)} p.m.`,

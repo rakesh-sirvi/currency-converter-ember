@@ -1,28 +1,30 @@
 <div class='card shadow weather_card'>
-  <img class='card-img-top' src={{this.weatherInfo.weather}} alt=' ' />
-  <div class='country_name'>
-    <h3 class='font-weight-bold mt-5'>
-      {{#if this.weatherInfo.weather}}
+  {{#if this.weatherInfo.weather}}
+    <div class='country_name__2'>
+      <h3 class='font-weight-bold mt-5'>
         <button
+          type='button'
+          class='btn btn-dark'
+          {{on 'click' (fn this.changeCountry 'Another')}}
+          disabled={{if (eq this.selectedCountry 'India') false true}}
+        >{{this.country.selectedCountry}}</button>
+      </h3>
+    </div>
+  {{/if}}
+
+  {{#if this.weatherInfo.weather}}
+    <img class='card-img-top' src={{this.weatherInfo.weather}} alt='weather' />
+    <div class='country_name'>
+      <h3 class='font-weight-bold mt-5'>
+        <button
+          type='button'
           class='btn btn-dark'
           {{on 'click' (fn this.changeCountry 'India')}}
           disabled={{if (eq this.selectedCountry 'India') true false}}
         >India</button>
-      {{/if}}
-    </h3>
-  </div>
-
-  <div class='country_name__2'>
-    <h3 class='font-weight-bold mt-5'>
-      {{#if this.weatherInfo.weather}}
-        <button
-          class='btn btn-dark'
-          {{on 'click' (fn this.changeCountry 'Another')}}
-          disabled={{unless (eq this.selectedCountry 'India') true false}}
-        >{{this.country.selectedCountry}}</button>
-      {{/if}}
-    </h3>
-  </div>
+      </h3>
+    </div>
+  {{/if}}
 
   <div class='card-body'>
     {{#if this.isLoading}}
@@ -36,7 +38,7 @@
     {{else}}
       {{! Temperature }}
       <div class='parameter d-flex flex-row flex-wrap align-items-center'>
-        <img class='icon' src='assets/images/temp.svg' alt=' ' />
+        <img class='icon' src='assets/images/temp.svg' alt='temperature' />
         <div class='d-flex flex-column'>
           <p class='m-0 fs-6'>Temperature</p>
           <h6 class='fw-bold param_data'>{{this.weatherInfo.temp}}
@@ -58,7 +60,7 @@
           <img
             class='icon me-2'
             src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2KPZCNU0hvVHXCOGOycLqvrztydw_rCjW6g&usqp=CAU'
-            alt=' '
+            alt='sunrise'
           />
           <div class='d-flex flex-column justify-content-start'>
             Sunrise
@@ -70,7 +72,7 @@
           <img
             class='icon me-2'
             src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8Wof7H3NV8iVlXuoG5dRZAjqj9Dd9KPJKRw&usqp=CAU'
-            alt=' '
+            alt='sunset'
           />
           <div class='d-flex flex-column justify-content-start'>
             Sunset
@@ -84,7 +86,7 @@
         class='parameter d-flex flex-row flex-nowrap align-items-start justify-content-between'
       >
         <div class='parameter__box d-flex flex-row align-items-start'>
-          <img class='icon me-2 mt-2' src='assets/images/wind.svg' alt=' ' />
+          <img class='icon me-2 mt-2' src='assets/images/wind.svg' alt='wind' />
           <div class='d-flex flex-column'>
             <p class='m-0 fs-6'>Wind</p>
             <div class='d-flex flex-column align-items-start'>
@@ -100,8 +102,12 @@
                     <img
                       class='icon arrow ms-1'
                       src='assets/images/windDirection.svg'
-                      alt=' '
-                      style='transform: rotate({{this.weatherInfo.windDirectionAngle}}deg);'
+                      alt='wind direction'
+                      style={{(concat
+                        'transform: rotate('
+                        this.weatherInfo.windDirectionAngle
+                        'deg)'
+                      )}}
                     />
                   </span>
                 {{/if}}
@@ -114,7 +120,7 @@
           <img
             class='icon me-2'
             src='assets/images/relative_humidity.svg'
-            alt=' '
+            alt='relative_humidity'
           />
           <div class='d-flex flex-column'>
             <p class='m-0 fs-6'>Relative Humidity</p>

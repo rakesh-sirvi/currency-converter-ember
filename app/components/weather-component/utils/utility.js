@@ -52,11 +52,7 @@ export const _getMinMaxTemp = (temps) => {
 
   for (let i = 0; i < 7; ++i) {
     temperatures.push({
-      day: temps.time[i]
-        .substr(5)
-        .split('-')
-        .reverse()
-        .join('/'),
+      day: temps.time[i].substr(5).split('-').reverse().join('/'),
       min: temps.min[i],
       max: temps.max[i],
     });

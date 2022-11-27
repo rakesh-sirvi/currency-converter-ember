@@ -21,9 +21,8 @@ export default class TabsComponent extends Component {
     this.currentOption = newOption;
   }
 
-  constructor() {
-    super(...arguments);
-
+  @action
+  updateData() {
     this.minMaxTemps = _getMinMaxTemp(this.args.temperatures);
     this.precipitation = _getPrecipitation(this.args.precipitation);
     this.relativeHumidity = _getRelativeHumidity(this.args.relative_humidity);

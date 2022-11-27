@@ -1,6 +1,11 @@
-<div class='tabs'>
+<div
+  class='tabs'
+  {{did-insert this.updateData}}
+  {{did-update this.updateData @temperatures}}
+>
   <div class='tab__options d-flex flex-row flex-nowrap mb-2'>
     <button
+      type='button'
       class='option me-2 text-muted
         {{if
           (eq this.currentOption "temperature")
@@ -11,6 +16,7 @@
       Temperature
     </button>
     <button
+      type='button'
       class='option me-2 text-muted
         {{if
           (eq this.currentOption "precipitation")
@@ -21,6 +27,7 @@
       Precipitation
     </button>
     <button
+      type='button'
       class='option text-muted
         {{if
           (eq this.currentOption "relative_humidity")
@@ -40,8 +47,8 @@
       </div>
       {{#each this.minMaxTemps as |temp|}}
         <div class='d-flex flex-column justify-content-start me-2 p-1 bg-light'>
-          <h6 class="font-sm">{{temp.min}}</h6>
-          <h6 class="font-sm">{{temp.max}}</h6>
+          <h6 class='font-sm'>{{temp.min}}</h6>
+          <h6 class='font-sm'>{{temp.max}}</h6>
           <h6 class='text-muted font-sm'>{{temp.day}}</h6>
         </div>
       {{/each}}
@@ -53,7 +60,7 @@
       <h6 class='fw-bold me-2 font-sm'>Level (mm)</h6>
       {{#each this.precipitation as |p|}}
         <div class='d-flex flex-column justify-content-start me-2 p-1 bg-light'>
-          <h6 class="font-sm">{{p.val}}</h6>
+          <h6 class='font-sm'>{{p.val}}</h6>
           <h6 class='text-muted font-sm'>{{p.time}}</h6>
         </div>
       {{/each}}
@@ -65,7 +72,7 @@
       <h6 class='fw-bold me-2 font-sm'> (%)</h6>
       {{#each this.relativeHumidity as |rh|}}
         <div class='d-flex flex-column justify-content-start me-2 p-1 bg-light'>
-          <h6 class="font-sm">{{rh.val}}</h6>
+          <h6 class='font-sm'>{{rh.val}}</h6>
           <h6 class='text-muted font-sm'>{{rh.time}}</h6>
         </div>
       {{/each}}
