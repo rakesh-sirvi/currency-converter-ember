@@ -1,0 +1,48 @@
+name: CD
+
+on:
+  push:
+    branches:
+      - main
+      - master
+
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: 'pages'
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 16.x
+      - run: yarn install --frozen-lockfile
+      - run: |
+          touch $GITHUB_WORKSPACE/.env
+          echo ROOT_URL=${{ secrets.ROOT_URL }} >> $GITHUB_WORKSPACE/.env
+          echo GEOAPIFY_API_KEY=${{ secrets.GEOAPIFY_API_KEY }} >> $GITHUB_WORKSPACE/.env
+      - name: build project
+        run: yarn build
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: dist
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v1
