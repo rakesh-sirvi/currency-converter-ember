@@ -1,7 +1,19 @@
 {{page-title 'EmberApp'}}
 
-<Weather />
-
-<CurrencyExchanger class='container' @from='USD' @to='INR' />
-
+<div class='main-body'>
+  <div class='sidebar'>
+    <div>Sidebar</div>
+  </div>
+  <div class='grid-container'>
+    <section class='news-section grid-item'>
+      <div>News Section</div>
+    </section>
+    <section class='currency-exchanger-section grid-item'>
+      <CurrencyExchanger @from='USD' @to='INR' />
+    </section>
+    <section class='weather-section grid-item'>
+      <Weather />
+    </section>
+  </div>
+</div>
 {{outlet}}
