@@ -1,0 +1,74 @@
+<div class='tabs'>
+  <div class='tab__options d-flex flex-row flex-nowrap mb-2'>
+    <button
+      class='option me-2 text-muted
+        {{if
+          (eq this.currentOption "temperature")
+          "border-bottom border-warning border-2 fw-bold"
+        }}'
+      {{on 'click' (fn this.changeCurrentOption 'temperature')}}
+    >
+      Temperature
+    </button>
+    <button
+      class='option me-2 text-muted
+        {{if
+          (eq this.currentOption "precipitation")
+          "border-bottom border-warning border-2 fw-bold"
+        }}'
+      {{on 'click' (fn this.changeCurrentOption 'precipitation')}}
+    >
+      Precipitation
+    </button>
+    <button
+      class='option text-muted
+        {{if
+          (eq this.currentOption "relative_humidity")
+          " border-bottom border-bottom border-warning border-2 fw-bold"
+        }}'
+      {{on 'click' (fn this.changeCurrentOption 'relative_humidity')}}
+    >
+      Relative Humidity
+    </button>
+  </div>
+
+  {{#if (eq this.currentOption 'temperature')}}
+    <div class='d-flex flex-row flex-nowrap overflow-auto'>
+      <div class='d-flex flex-column justify-content-start me-2'>
+        <h6 class='fw-bold font-sm'>Min (°C)</h6>
+        <h6 class='fw-bold font-sm'>Max (°C)</h6>
+      </div>
+      {{#each this.minMaxTemps as |temp|}}
+        <div class='d-flex flex-column justify-content-start me-2 p-1 bg-light'>
+          <h6 class="font-sm">{{temp.min}}</h6>
+          <h6 class="font-sm">{{temp.max}}</h6>
+          <h6 class='text-muted font-sm'>{{temp.day}}</h6>
+        </div>
+      {{/each}}
+    </div>
+  {{/if}}
+
+  {{#if (eq this.currentOption 'precipitation')}}
+    <div class='d-flex flex-row flex-nowrap overflow-auto'>
+      <h6 class='fw-bold me-2 font-sm'>Level (mm)</h6>
+      {{#each this.precipitation as |p|}}
+        <div class='d-flex flex-column justify-content-start me-2 p-1 bg-light'>
+          <h6 class="font-sm">{{p.val}}</h6>
+          <h6 class='text-muted font-sm'>{{p.time}}</h6>
+        </div>
+      {{/each}}
+    </div>
+  {{/if}}
+
+  {{#if (eq this.currentOption 'relative_humidity')}}
+    <div class='d-flex flex-row flex-nowrap overflow-auto'>
+      <h6 class='fw-bold me-2 font-sm'> (%)</h6>
+      {{#each this.relativeHumidity as |rh|}}
+        <div class='d-flex flex-column justify-content-start me-2 p-1 bg-light'>
+          <h6 class="font-sm">{{rh.val}}</h6>
+          <h6 class='text-muted font-sm'>{{rh.time}}</h6>
+        </div>
+      {{/each}}
+    </div>
+  {{/if}}
+</div>
