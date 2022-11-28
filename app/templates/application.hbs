@@ -1,7 +1,22 @@
 {{page-title 'EmberApp'}}
 
-<Weather />
+<div class='container py-5'>
+  <div class='row mb-4'>
+    <div class='col'>
+      <CurrencyExchanger @from='USD' @to='INR' />
+    </div>
+  </div>
 
-<CurrencyExchanger class='container' @from='USD' @to='INR' />
+  <div class='row'>
+    <div class='col-12 col-md-6 col-lg-5'>
+      <WeatherComponent::Weather />
+    </div>
+
+    <div class='col-12 col-md-6 col-lg-7'>
+      <NewsComponent::News />
+    </div>
+  </div>
+
+</div>
 
 {{outlet}}

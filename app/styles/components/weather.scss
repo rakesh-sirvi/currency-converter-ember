@@ -1,0 +1,89 @@
+.weather_card {
+  position: relative;
+
+  .country_name {
+    position: absolute;
+    margin-top: -30px;
+    margin-left: 10px;
+  }
+
+  .country_name__2 {
+    position: absolute;
+    right: 0;
+    margin-right: 10px;
+    margin-top: -30px;
+  }
+
+  .parameter {
+    padding-bottom: 0.7rem;
+    margin-bottom: 0.7rem;
+    border-bottom: 1px solid lightgray;
+    z-index: 1000;
+
+    .param_data {
+      transition: transform 0.5s;
+      user-select: none;
+
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+
+    .icon {
+      width: 30px;
+      height: 30px;
+    }
+
+    .arrow {
+      width: 20px;
+      height: 20px;
+      fill: #fff !important;
+    }
+
+    .convertTemp {
+      outline: 0;
+      padding: 1px 7px;
+      margin-top: -4.6px;
+      border: none;
+      border-radius: 50%;
+      font-size: 1.5rem;
+      z-index: 2;
+      position: absolute;
+      right: 0;
+    }
+  }
+}
+
+.tabs {
+  .tab__options {
+    overflow-x: scroll;
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+
+  .tab__options::-webkit-scrollbar {
+    display: none;
+  }
+
+  .option {
+    font-size: 0.9rem;
+    background: none;
+    border: none;
+    padding: 0;
+    white-space: nowrap;
+  }
+
+  .font-sm {
+    font-size: 0.8rem;
+    text-align: center;
+  }
+
+  .overflow-auto {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+
+  .overflow-auto::-webkit-scrollbar {
+    display: none;
+  }
+}
