@@ -6,7 +6,7 @@ import { API_ENDPOINT_FOR_LOCATION } from '../components/weather-component/utils
 
 import ENV from 'ember-app/config/environment';
 
-const API_LOCATION_SUFFIX = `&format=json&apiKey=${ENV.GEOAPIFY_API_KEY}`;
+const API_LOCATION_SUFFIX = `&format=json&apiKey=952e014758764d489f4ba6c954b063aa`;
 
 export default class CountryService extends Service {
   @tracked selectedCountry = 'Argentina';
