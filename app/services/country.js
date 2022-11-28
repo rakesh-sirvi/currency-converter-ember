@@ -4,7 +4,7 @@ import { action } from '@ember/object';
 
 import { API_ENDPOINT_FOR_LOCATION } from '../components/weather-component/utils/constants';
 
-import ENV from 'ember-app/config/environment';
+// import ENV from 'ember-app/config/environment';
 
 const API_LOCATION_SUFFIX = `&format=json&apiKey=952e014758764d489f4ba6c954b063aa`;
 
