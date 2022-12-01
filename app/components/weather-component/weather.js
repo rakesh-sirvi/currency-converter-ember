@@ -20,9 +20,7 @@ const API_ENDPOINT_FOR_WEATHER = 'https://api.open-meteo.com/v1/forecast';
 export default class WeatherComponent extends Component {
   @service country;
 
-  @tracked selectedCountry = this.country.selectedCountry;
-
-  @tracked countryData = this.country.countryData;
+  @tracked selectedCountry = 'India';
 
   @tracked weatherInfo;
 
@@ -38,14 +36,17 @@ export default class WeatherComponent extends Component {
     return !this.weatherInfo;
   }
 
+  get countryData() {
+    if (this.selectedCountry === 'India') return INDIA_COORDINATES;
+    return this.country.countryData;
+  }
+
+  get countryDetails() {}
+
   constructor() {
     super(...arguments);
 
-    this.country._getCountryCoordinates().then(() => {
-      this.countryData = this.country.countryData;
-
-      if (this.countryData) this._getWeatherInfo();
-    });
+    this._getWeatherInfo();
 
     // If we don't get response in 10 s, some error occured
     setTimeout(() => {
@@ -53,14 +54,15 @@ export default class WeatherComponent extends Component {
     }, 10000);
   }
 
+  @action
   async _getWeatherInfo() {
     try {
       const queryResponse = await fetch(
         `${API_ENDPOINT_FOR_WEATHER}?latitude=${
-          this.countryData.latitude
+          this.countryData?.latitude
         }&longitude=${
-          this.countryData.longitude
-        }&current_weather=true&daily=sunrise,sunset,temperature_2m_max,temperature_2m_min&hourly=relativehumidity_2m,precipitation&timezone=${this.countryData.timeZone.replace(
+          this.countryData?.longitude
+        }&current_weather=true&daily=sunrise,sunset,temperature_2m_max,temperature_2m_min&hourly=relativehumidity_2m,precipitation&timezone=${this.countryData?.timeZone.replace(
           '/',
           '%2F'
         )}`
@@ -117,12 +119,13 @@ export default class WeatherComponent extends Component {
 
   @action
   changeCountry(newCountry) {
+    // To set loading true till new data is fetched
+    this.weatherInfo = null;
+
     if (newCountry !== 'India') {
       this.selectedCountry = this.country.selectedCountry;
-      this.countryData = this.country.countryData;
     } else {
       this.selectedCountry = 'India';
-      this.countryData = INDIA_COORDINATES;
     }
     this._getWeatherInfo();
   }

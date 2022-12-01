@@ -1,0 +1,51 @@
+<span>
+  <button
+    class='navbar-toggler'
+    type='button'
+    data-bs-toggle='collapse'
+    data-bs-target='#navbarToggleExternalContent'
+    aria-controls='navbarToggleExternalContent'
+    aria-expanded='false'
+    aria-label='Toggle navigation'
+    {{on 'click' this.toggleNav}}
+  >
+    <span class='navbar-toggler-icon'></span>
+  </button>
+</span>
+
+<div
+  class='sidebar bg-dark'
+  style={{(concat 'width: ' this.sidebarWidth 'px')}}
+>
+  <div class='sidebar_top'>
+    <label class="label" for="search_input">Search</label>
+    <input
+      type='text'
+      id="search_input"
+      class='country__search'
+      placeholder='Search ...'
+      value={{this.searchText}}
+      {{on 'input' this.filterCountry}}
+    />
+    <button
+      type='button'
+      class='close_btn'
+      {{on 'click' this.toggleNav}}
+    >&times;</button>
+  </div>
+
+  <div class='d-flex flex-column justify-content-start'>
+    {{#each this.countryList as |countryName|}}
+      <button
+        type='button'
+        class='country__name
+          {{if
+            (eq this.country.selectedCountry countryName)
+            "active"
+            "text-muted"
+          }}'
+        {{on 'click' (fn this.selectCountry countryName)}}
+      >{{countryName}}</button>
+    {{/each}}
+  </div>
+</div>
