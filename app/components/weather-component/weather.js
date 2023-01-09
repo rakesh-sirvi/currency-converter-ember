@@ -41,8 +41,6 @@ export default class WeatherComponent extends Component {
     return this.country.countryData;
   }
 
-  get countryDetails() {}
-
   constructor() {
     super(...arguments);
 
