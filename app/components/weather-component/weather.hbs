@@ -1,4 +1,7 @@
-<div class='card shadow weather_card'>
+<div
+  class='card shadow weather_card'
+  {{did-update this._getWeatherInfo this.country.countryData}}
+>
   {{#if this.weatherInfo.weather}}
     <div class='country_name__2'>
       <h3 class='font-weight-bold mt-5'>
@@ -32,7 +35,7 @@
         {{#if this.couldNotFindData}}
           Apologies! Some error occured getting data : &#10098;
         {{else}}
-          Loading data ...
+          <LoadingSpinner class='d-flex justify-content-center my-5' />
         {{/if}}
       </p>
     {{else}}
