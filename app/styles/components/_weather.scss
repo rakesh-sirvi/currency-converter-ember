@@ -1,5 +1,16 @@
+@use '../utils/themify' as *;
+@use '../utils/themes' as *;
+
 .weather_card {
   position: relative;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+
+  @include themify($themes) {
+    background: themed('glassEffect') !important;
+    color: themed('sidebarText');
+    border: 1px solid themed('sidebarText');
+  }
 
   .country_name {
     position: absolute;
@@ -53,6 +64,13 @@
 }
 
 .tabs {
+  h6 {
+    @include themify($themes) {
+      background: themed('glassEffect') !important;
+      color: themed('sidebarText');
+    }
+  }
+
   .tab__options {
     overflow-x: scroll;
     -ms-overflow-style: none; /* IE and Edge */

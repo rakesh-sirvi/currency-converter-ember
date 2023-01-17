@@ -1,3 +1,30 @@
+@use '../utils/themify' as *;
+@use '../utils/themes' as *;
+
+.country-toggle {
+  outline: none;
+  background: none;
+  border: 1px solid;
+  padding: 5px 10px;
+  border-radius: 5px;
+
+  @include themify($themes) {
+    border-color: themed('text');
+    color: themed('text');
+  }
+
+  &:focus,
+  &:active {
+    outline: none;
+  }
+
+  .location-logo {
+    width: 20px;
+    display: inline;
+    margin-right: 5px;
+  }
+}
+
 .sidebar {
   height: 100%;
   width: 0;
@@ -7,7 +34,15 @@
   left: 0;
   overflow-x: hidden;
   transition: 0.5s;
-  box-shadow: 0 0 5px 10px #F8F9FA;
+  border-right: 3px solid;
+  margin-left: -3px;
+
+  @include themify($themes) {
+    background-color: themed('background');
+    border-right-color: themed('sidebarText');
+  }
+  // border-right: 0.5rem solid #444352;
+  // box-shadow: 0 0 5px 10px #F8F9FA;
 
   .sidebar_top {
     display: flex;
@@ -17,9 +52,12 @@
     position: sticky;
     top: 0;
     width: 250px;
-    padding: 10px 15px;
-    z-index: 2;
-    // background-color: #212529;
+    padding: 15px;
+    z-index: 200;
+
+    @include themify($themes) {
+      background-color: themed('background');
+    }
 
     .label {
       display: none;
@@ -31,15 +69,23 @@
       width: 200px;
       outline: none;
       border-radius: 5px;
+
+      @include themify($themes) {
+        color: themed('background');
+        background-color: themed('sidebarText');
+      }
     }
 
     .close_btn {
       font-size: 25px;
       background-color: inherit;
-      color: #818181;
       border: none;
       outline: none;
       display: block;
+
+      @include themify($themes) {
+        color: themed('sidebarText');
+      }
     }
   }
 
@@ -49,7 +95,6 @@
     text-decoration: none;
     font-size: 1rem;
     max-width: 200px;
-    color: #818181;
     transition: 0.3s;
     background-color: transparent;
     border: none;
@@ -57,6 +102,10 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+
+    @include themify($themes) {
+      color: themed('sidebarText');
+    }
 
     &:hover {
       transform: scale(1.25);

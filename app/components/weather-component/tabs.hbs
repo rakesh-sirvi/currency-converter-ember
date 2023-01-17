@@ -46,7 +46,7 @@
         <h6 class='fw-bold font-sm'>Max (°C)</h6>
       </div>
       {{#each this.minMaxTemps as |temp|}}
-        <div class='d-flex flex-column justify-content-start me-2 p-1 bg-light'>
+        <div class='d-flex flex-column justify-content-start me-2 p-1'>
           <h6 class='font-sm'>{{temp.min}}</h6>
           <h6 class='font-sm'>{{temp.max}}</h6>
           <h6 class='text-muted font-sm'>{{temp.day}}</h6>
@@ -59,7 +59,7 @@
     <div class='d-flex flex-row flex-nowrap overflow-auto'>
       <h6 class='fw-bold me-2 font-sm'>Level (mm)</h6>
       {{#each this.precipitation as |p|}}
-        <div class='d-flex flex-column justify-content-start me-2 p-1 bg-light'>
+        <div class='d-flex flex-column justify-content-start me-2 p-1'>
           <h6 class='font-sm'>{{p.val}}</h6>
           <h6 class='text-muted font-sm'>{{p.time}}</h6>
         </div>
@@ -71,7 +71,7 @@
     <div class='d-flex flex-row flex-nowrap overflow-auto'>
       <h6 class='fw-bold me-2 font-sm'> (%)</h6>
       {{#each this.relativeHumidity as |rh|}}
-        <div class='d-flex flex-column justify-content-start me-2 p-1 bg-light'>
+        <div class='d-flex flex-column justify-content-start me-2 p-1'>
           <h6 class='font-sm'>{{rh.val}}</h6>
           <h6 class='text-muted font-sm'>{{rh.time}}</h6>
         </div>
