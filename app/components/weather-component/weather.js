@@ -41,6 +41,11 @@ export default class WeatherComponent extends Component {
     return this.country.countryData;
   }
 
+  get globalCountry() {
+    return this.country.availableCountries[this.country.selectedCountry]
+      .countryName;
+  }
+
   constructor() {
     super(...arguments);
 
@@ -121,7 +126,7 @@ export default class WeatherComponent extends Component {
     this.weatherInfo = null;
 
     if (newCountry !== 'India') {
-      this.selectedCountry = this.country.selectedCountry;
+      this.selectedCountry = this.globalCountry;
     } else {
       this.selectedCountry = 'India';
     }

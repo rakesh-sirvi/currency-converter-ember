@@ -4,8 +4,7 @@ import { action } from '@ember/object';
 import { inject as service } from '@ember/service';
 
 export default class CurrencyExchanger extends Component {
-  @service('currency')
-  currencyService;
+  @service('currency') currencyService;
 
   @tracked fromState = {
     currency: this.from,
@@ -18,15 +17,11 @@ export default class CurrencyExchanger extends Component {
   };
 
   get from() {
-    return (
-      this.getCurrencyByCode(this.args.from) ?? this.getCurrencyByCode('USD')
-    );
+    return this.getCurrencyByCode(this.args.from ?? 'INR');
   }
 
   get to() {
-    return (
-      this.getCurrencyByCode(this.args.to) ?? this.getCurrencyByCode('INR')
-    );
+    return this.getCurrencyByCode(this.args.to ?? 'USD');
   }
 
   get currencies() {
