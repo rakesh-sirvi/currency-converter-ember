@@ -2,7 +2,7 @@ import Service from '@ember/service';
 import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 
-import { countries } from '../utils/countries';
+import countries from '../utils/countries';
 
 import { API_ENDPOINT_FOR_LOCATION } from '../components/weather-component/utils/constants';
 
@@ -11,17 +11,16 @@ import { API_ENDPOINT_FOR_LOCATION } from '../components/weather-component/utils
 const API_LOCATION_SUFFIX = `&format=json&apiKey=952e014758764d489f4ba6c954b063aa`;
 
 export default class CountryService extends Service {
-  @tracked selectedCountry = localStorage.getItem('country') || 'Argentina';
-
-  get availableCountriesName() {
-    return countries.map((country) => country.countryName);
-  }
+  @tracked selectedCountry = localStorage.getItem('country') || 'AR';
 
   @tracked countryData;
 
+  get availableCountries() {
+    return countries;
+  }
+
   constructor() {
     super(...arguments);
-
     this._getCountryCoordinates();
   }
 
@@ -35,7 +34,9 @@ export default class CountryService extends Service {
   async _getCountryCoordinates() {
     try {
       const queryResponse = await fetch(
-        `${API_ENDPOINT_FOR_LOCATION}?text=${this.selectedCountry}${API_LOCATION_SUFFIX}`
+        `${API_ENDPOINT_FOR_LOCATION}?text=${
+          this.availableCountries[this.selectedCountry].countryName
+        }${API_LOCATION_SUFFIX}`
       );
       const data = await queryResponse.json();
       this.countryData = {

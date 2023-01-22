@@ -11,8 +11,8 @@ export default class SidebarComponent extends Component {
   @tracked searchText = '';
 
   get countryList() {
-    return this.country.availableCountriesName.filter((country) =>
-      country.toLowerCase().includes(this.searchText)
+    return Object.values(this.country.availableCountries).filter((country) =>
+      country.countryName.toLowerCase().includes(this.searchText.toLowerCase())
     );
   }
 

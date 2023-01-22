@@ -18,10 +18,10 @@
   style={{(concat 'width: ' this.sidebarWidth 'px')}}
 >
   <div class='sidebar_top'>
-    <label class="label" for="search_input">Search</label>
+    <label class='label' for='search_input'>Search</label>
     <input
       type='text'
-      id="search_input"
+      id='search_input'
       class='country__search'
       placeholder='Search ...'
       value={{this.searchText}}
@@ -35,17 +35,17 @@
   </div>
 
   <div class='d-flex flex-column justify-content-start'>
-    {{#each this.countryList as |countryName|}}
+    {{#each this.countryList as |country|}}
       <button
         type='button'
         class='country__name
           {{if
-            (eq this.country.selectedCountry countryName)
+            (eq this.country.selectedCountry country.countryCode)
             "active"
             "text-muted"
           }}'
-        {{on 'click' (fn this.selectCountry countryName)}}
-      >{{countryName}}</button>
+        {{on 'click' (fn this.selectCountry country.countryCode)}}
+      >{{country.countryName}}</button>
     {{/each}}
   </div>
 </div>

@@ -31,7 +31,7 @@ export default class CurrencyService extends Service {
 
   getCurrencyByCode(code) {
     return this.currencies.find(
-      (currency) => currency.code === code.toUpperCase()
+      (currency) => currency.code.toLowerCase() === code?.toLowerCase()
     );
   }
 }

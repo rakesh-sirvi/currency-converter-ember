@@ -1,4 +1,4 @@
-export const countries = [
+const countries = [
   {
     countryCode: 'AD',
     countryName: 'Andorra',
@@ -2000,3 +2000,8 @@ export const countries = [
     continentName: 'Africa',
   },
 ];
+
+export default countries.reduce((acc, curr) => {
+  acc[curr.countryCode] = curr;
+  return acc;
+}, {});

@@ -10,7 +10,7 @@
           class='btn btn-dark'
           {{on 'click' (fn this.changeCountry 'Another')}}
           disabled={{if (eq this.selectedCountry 'India') false true}}
-        >{{this.country.selectedCountry}}</button>
+        >{{this.globalCountry}}</button>
       </h3>
     </div>
   {{/if}}
