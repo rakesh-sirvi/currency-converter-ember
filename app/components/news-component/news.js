@@ -25,6 +25,7 @@ export default class NewsComponentNewsComponent extends Component {
 
   @action
   async _getNewsData() {
+    this.fetchState = { loading: true, error: '' };
     try {
       const res = await fetch(`${NEWS_API}?lang=en&countries=${this.country}`, {
         headers: {

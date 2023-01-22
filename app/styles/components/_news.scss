@@ -1,9 +1,21 @@
 .news-container {
+  @include themify($themes) {
+    background: themed('background');
+    color: themed('text');
+    border: 1px solid themed('sidebarText');
+  }
   display: flex;
   flex-direction: column;
   height: 800px;
-  padding: 0 10px;
   overflow: auto;
+}
+
+.news-container .card {
+  @include themify($themes) {
+    background: themed('background');
+    color: themed('text');
+    border: 1px solid themed('sidebarText');
+  }
 }
 
 .news-container .news-heading {
