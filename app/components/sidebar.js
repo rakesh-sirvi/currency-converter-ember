@@ -10,10 +10,26 @@ export default class SidebarComponent extends Component {
 
   @tracked searchText = '';
 
-  get countryList() {
-    return this.country.availableCountriesName.filter((country) =>
-      country.toLowerCase().includes(this.searchText)
+  countryId = (name) => name.split(' ').join('').toLowerCase();
+
+  constructor() {
+    super(...arguments);
+
+    const selectedCountry = document.querySelector(
+      `#${this.countryId(this.country.selectedCountry)}`
     );
+
+    if (selectedCountry !== null) {
+      setTimeout(() => {
+        selectedCountry.scrollIntoView();
+      }, 0);
+    }
+  }
+
+  get countryList() {
+    return this.country.availableCountriesName
+      .filter((country) => country.toLowerCase().includes(this.searchText))
+      .sort();
   }
 
   @action

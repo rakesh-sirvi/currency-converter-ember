@@ -1,7 +1,36 @@
-@import './components/weather.scss';
-@import './components/currency-exchanger.scss';
-@import './components/sidebar.scss';
+@use './utils/themify' as *;
+@use './utils/themes' as *;
 
-.navbar {
-  // box-shadow: 0 0 5px 10px #212529;
+@import './components/weather';
+@import './components/currency-exchanger';
+@import './components/sidebar';
+@import './components/theme-toggle';
+
+* {
+  box-sizing: border-box;
+}
+
+.navbar-content {
+  border: 2px solid;
+  padding: 10px;
+  margin-top: -8px;
+
+  .logo {
+    width: 50px;
+  }
+
+  .theme-image {
+    width: 30px;
+    margin-right: 10px;
+  }
+
+  @include themify($themes) {
+    border-color: themed('toggleBackground');
+  }
+}
+
+#main {
+  @include themify($themes) {
+    background-color: themed('background');
+  }
 }

@@ -1,6 +1,6 @@
 <span>
   <button
-    class='navbar-toggler'
+    class='country-toggle'
     type='button'
     data-bs-toggle='collapse'
     data-bs-target='#navbarToggleExternalContent'
@@ -9,19 +9,21 @@
     aria-label='Toggle navigation'
     {{on 'click' this.toggleNav}}
   >
-    <span class='navbar-toggler-icon'></span>
+    {{! <span class='navbar-toggler-icon'></span> }}
+    <img
+      src='assets/images/location.svg'
+      alt='|'
+      class='location-logo'
+    />{{this.country.selectedCountry}}
   </button>
 </span>
 
-<div
-  class='sidebar bg-light'
-  style={{(concat 'width: ' this.sidebarWidth 'px')}}
->
+<div class='sidebar' style={{(concat 'width: ' this.sidebarWidth 'px')}}>
   <div class='sidebar_top'>
-    <label class="label" for="search_input">Search</label>
+    <label class='label' for='search_input'>Search</label>
     <input
       type='text'
-      id="search_input"
+      id='search_input'
       class='country__search'
       placeholder='Search ...'
       value={{this.searchText}}
@@ -38,6 +40,7 @@
     {{#each this.countryList as |countryName|}}
       <button
         type='button'
+        id={{this.countryId countryName}}
         class='country__name
           {{if
             (eq this.country.selectedCountry countryName)

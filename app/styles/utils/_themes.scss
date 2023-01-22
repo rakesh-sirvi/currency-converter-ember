@@ -1,0 +1,24 @@
+$themes: (
+  light: (
+    toggleBackground: #444352,
+    toggleSlider: #ccc,
+    text: #444352,
+    background: #f8f9fa,
+    sidebarText: #212529,
+    shadow: rgb(50, 50, 50),
+    glassEffect: rgba(250, 250, 250, 0.38),
+    trueColor: rgba(0, 0, 0, 0.1),
+    currencySwitch: "black"
+  ),
+  dark: (
+    toggleBackground: #ccc,
+    toggleSlider: #444352,
+    text: #ccc,
+    background: #212529,
+    sidebarText: #f8f9fa,
+    shadow: rgb(200, 200, 200),
+    glassEffect: rgba(60, 60, 60, 0.38),
+    trueColor: rgba(255, 255, 255, 0.9),
+    currencySwitch: "white"
+  ),
+);
