@@ -1,1 +1,23 @@
-<p>{{this.app_name}} App</p>
+<div class='news-container' {{did-update this._getNewsData this.country}}>
+  {{#if (or this.fetchState.loading this.fetchState.error)}}
+    {{#if this.fetchState.loading}}
+      <LoadingSpinner class='d-flex justify-content-center my-5' />
+    {{/if}}
+    {{#if this.fetchState.error}}
+      <div class='d-flex justify-content-center my-5'>
+        <p class='text-center'>{{this.fetchState.error}}</p>
+      </div>
+    {{/if}}
+  {{else}}
+    {{#each this.newsData as |news|}}
+      <NewsComponent::NewsCard
+        @author={{news.author}}
+        @title={{news.title}}
+        @description={{news.excerpt}}
+        @content={{news.summary}}
+        @date={{news.published_date}}
+        @imageUrl={{news.media}}
+      />
+    {{/each}}
+  {{/if}}
+</div>
