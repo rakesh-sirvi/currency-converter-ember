@@ -11,12 +11,11 @@
   {{else}}
     {{#each this.newsData as |news|}}
       <NewsComponent::NewsCard
-        @author={{news.author}}
-        @title={{news.title}}
-        @description={{news.excerpt}}
-        @content={{news.summary}}
-        @date={{news.published_date}}
-        @imageUrl={{news.media}}
+        @author={{'admin'}}
+        @title={{news.headline}}
+        @description={{news.description}}
+        @date={{news.published}}
+        @imageUrl={{news.image}}
       />
     {{/each}}
   {{/if}}
