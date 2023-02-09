@@ -38,6 +38,7 @@ export default class SidebarComponent extends Component {
 
   @action
   toggleNav() {
+    this.searchText = '';
     if (this.sidebarWidth) {
       this.sidebarWidth = 0;
       // const mainBody = document.querySelector('#main');

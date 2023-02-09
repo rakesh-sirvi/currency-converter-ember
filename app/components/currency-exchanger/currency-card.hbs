@@ -1,20 +1,20 @@
 <div class='card currency-card'>
   <div class='card-body'>
-    <h5
-      class='card-title text-uppercase text-center pb-1 border-bottom border-2'
-    >{{@title}}</h5>
     <div class='input-group mb-2'>
       {{#let (unique-id) as |selectorId|}}
-        <label class='input-group-text' for={{selectorId}}>
-          <img src={{@fromCurrency.img}} alt='flag_img' />
+        <label class='input-group-text flag' for={{selectorId}}>
+          {{#if @fromCurrency.img}}
+            <img class='currency-flag' src={{@fromCurrency.img}} alt='?' />
+          {{/if}}
         </label>
         <select
-          class='form-select'
+          class='form-select currency-input fw-bold'
           id={{selectorId}}
           {{on 'change' @onSelectorChange}}
         >
           {{#each @currencies as |currency|}}
             <option
+              class='currency-option fw-light'
               value={{currency.code}}
               selected={{eq currency.code @fromCurrency.code}}
             >{{currency.code}} [{{currency.description}}]</option>
@@ -22,7 +22,7 @@
         </select>
       {{/let}}
     </div>
-    <div class='mb-2'>
+    <div class='mb-2 float-end'>
       1
       <span class='fw-bold'>{{@fromCurrency.code}}</span>
       =
@@ -31,9 +31,6 @@
     </div>
     <div class='input-group'>
       {{#let (unique-id) as |inputId|}}
-        <label class='input-group-text' for={{inputId}}>
-          <span>{{@fromCurrency.code}}</span>
-        </label>
         <input
           id={{inputId}}
           type='number'

@@ -16,7 +16,7 @@
   {{/if}}
 
   {{#if this.weatherInfo.weather}}
-    <img class='card-img-top' src={{this.weatherInfo.weather}} alt='weather' />
+    {{!-- <img class='card-img-top' src={{this.weatherInfo.weather}} alt='weather' /> --}}
     <div class='country_name'>
       <h3 class='font-weight-bold mt-5'>
         <button
@@ -52,6 +52,7 @@
           type='button'
           class='convertTemp me-3'
           {{on 'click' this.changeTempUnit}}
+          title="Convert to {{if (eq this.tempUnit 'C') 'Farenheit' 'Celcius'}}"
         >°{{if (eq this.tempUnit 'C') 'F' 'C'}}</button>
       </div>
 

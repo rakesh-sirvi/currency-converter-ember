@@ -42,11 +42,7 @@
         type='button'
         id={{this.countryId country.countryName}}
         class='country__name
-          {{if
-            (eq this.country.selectedCountry country.countryCode)
-            "active"
-            "text-muted"
-          }}'
+          {{if (eq this.country.selectedCountry country.countryCode) "active"}}'
         {{on 'click' (fn this.selectCountry country.countryCode)}}
       >{{country.countryName}}</button>
     {{/each}}
