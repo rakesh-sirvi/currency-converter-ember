@@ -1,6 +1,6 @@
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
-import { action } from '@ember/object';
+import { action, computed } from '@ember/object';
 import { inject as service } from '@ember/service';
 import { htmlSafe } from '@ember/template';
 
@@ -19,6 +19,8 @@ const API_ENDPOINT_FOR_WEATHER = 'https://api.open-meteo.com/v1/forecast';
 
 export default class WeatherComponent extends Component {
   @service country;
+
+  @service weatherCache;
 
   @tracked selectedCountry = 'India';
 
@@ -49,28 +51,41 @@ export default class WeatherComponent extends Component {
   constructor() {
     super(...arguments);
 
-    this._getWeatherInfo();
+    this._getWeatherInfo(this.selectedCountry);
 
-    // If we don't get response in 10 s, some error occured
+    // If we don't get response in 10s, some error occured
     setTimeout(() => {
       if (this.isLoading) this.couldNotFindData = true;
     }, 10000);
   }
 
   @action
-  async _getWeatherInfo() {
+  async _getWeatherInfo(cname) {
+    if (typeof cname !== 'string') cname = this.globalCountry;
     try {
-      const queryResponse = await fetch(
-        `${API_ENDPOINT_FOR_WEATHER}?latitude=${
-          this.countryData?.latitude
-        }&longitude=${
-          this.countryData?.longitude
-        }&current_weather=true&daily=sunrise,sunset,temperature_2m_max,temperature_2m_min&hourly=relativehumidity_2m,precipitation&timezone=${this.countryData?.timeZone.replace(
-          '/',
-          '%2F'
-        )}`
-      );
-      const data = await queryResponse.json();
+      let data;
+
+      const lastFetched =
+        this.weatherCache.availableCountries[cname]?.lastFetched ?? 0;
+      const currentTime = new Date().getTime();
+
+      if (Math.abs(currentTime - lastFetched) <= 30 * 60 * 100) {
+        data = this.weatherCache.availableCountries[cname];
+      } else {
+        const queryResponse = await fetch(
+          `${API_ENDPOINT_FOR_WEATHER}?latitude=${
+            this.countryData?.latitude
+          }&longitude=${
+            this.countryData?.longitude
+          }&current_weather=true&daily=sunrise,sunset,temperature_2m_max,temperature_2m_min&hourly=relativehumidity_2m,precipitation&timezone=${this.countryData?.timeZone.replace(
+            '/',
+            '%2F'
+          )}`
+        );
+        data = await queryResponse.json();
+      }
+
+      this.weatherCache.addCountryInfo(cname, data);
 
       const { current_weather, daily, hourly } = data;
 
@@ -126,10 +141,10 @@ export default class WeatherComponent extends Component {
     this.weatherInfo = null;
 
     if (newCountry !== 'India') {
-      this.selectedCountry = this.globalCountry;
+      this.selectedCountry = newCountry;
     } else {
       this.selectedCountry = 'India';
     }
-    this._getWeatherInfo();
+    this._getWeatherInfo(this.selectedCountry);
   }
 }

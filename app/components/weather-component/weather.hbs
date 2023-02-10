@@ -1,6 +1,6 @@
 <div
   class='card shadow weather_card'
-  {{did-update this._getWeatherInfo this.country.countryData}}
+  {{did-update this._getWeatherInfo this.globalCountry}}
 >
   {{#if this.weatherInfo.weather}}
     <div class='country_name__2'>
@@ -8,7 +8,7 @@
         <button
           type='button'
           class='btn btn-dark'
-          {{on 'click' (fn this.changeCountry 'Another')}}
+          {{on 'click' (fn this.changeCountry this.globalCountry)}}
           disabled={{if (eq this.selectedCountry 'India') false true}}
         >{{this.globalCountry}}</button>
       </h3>
@@ -35,7 +35,7 @@
         {{#if this.couldNotFindData}}
           Apologies! Some error occured getting data : &#10098;
         {{else}}
-          <LoadingSpinner class='d-flex justify-content-center my-5' />
+          <LoadingSpinner class='my-5' />
         {{/if}}
       </p>
     {{else}}

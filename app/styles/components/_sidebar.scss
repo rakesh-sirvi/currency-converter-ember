@@ -5,9 +5,9 @@
   outline: none;
   background: none;
   border: 2px solid;
-  padding: 5px 10px;
+  padding: 3px 7px;
   border-radius: 5px;
-  font-weight: bold;
+  font-weight: 600;
 
   @include themify($themes) {
     border-color: themed('text');
@@ -23,6 +23,7 @@
     width: 20px;
     display: inline;
     margin-right: 5px;
+    margin-top: -5px;
   }
 }
 

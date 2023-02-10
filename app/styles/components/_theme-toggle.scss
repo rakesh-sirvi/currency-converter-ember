@@ -1,74 +1,66 @@
 @use '../utils/themify' as *;
 @use '../utils/themes' as *;
 
-.theme-toggle {
+.switch {
+  font-size: 17px;
   position: relative;
   display: inline-block;
-  width: 48px;
-  height: 20px;
-}
+  width: 3.5rem;
+  height: 2rem;
+  margin-right: 10px;
 
-/* Hide default HTML checkbox */
-.theme-toggle input {
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
-
-/* The slider */
-.slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  -webkit-transition: 0.4s;
-  transition: 0.4s;
-
-  @include themify($themes) {
-    background-color: themed('toggleBackground');
+  input {
+    opacity: 0;
+    width: 0;
+    height: 0;
   }
-}
 
-.slider:before {
-  position: absolute;
-  content: '';
-  height: 12px;
-  width: 12px;
-  left: 4px;
-  bottom: 4px;
-  -webkit-transition: 0.4s;
-  transition: 0.4s;
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transition: 0.3s ease;
+    border: 1.5px solid #a3dafb;
+    border-radius: 30px;
 
-  @include themify($themes) {
-    background-color: themed('toggleSlider');
+    &::before {
+      position: absolute;
+      content: '';
+      height: 1.3rem;
+      width: 1.3rem;
+      border-radius: 20px;
+      left: 0.3rem;
+      bottom: 0.3rem;
+      transform: translateX(1.5rem);
+      box-shadow: inset -3px -2px 5px 0px #8983f7, inset -10px -3px 0 0 #a3dafb;
+      transition: 0.3s ease;
+    }
   }
-}
 
-input:checked + .slider {
-  @include themify($themes) {
-    background-color: themed('toggleBackground');
+  input:checked + .slider {
+    background: #0f2027; /* fallback for old browsers */
+    background: -webkit-linear-gradient(
+      to right,
+      #2c5364,
+      #203a43,
+      #0f2027
+    ); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(
+      to right,
+      #2c5364,
+      #203a43,
+      #0f2027
+    ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+    border: none;
   }
-}
 
-input:focus + .slider {
-  @include themify($themes) {
-    box-shadow: 0 0 1px themed('toggleBackground');
+  input:checked + .slider::before {
+    background: linear-gradient(40deg, #ff0080, #ff8c00 70%);
+    box-shadow: none;
+    transform: translateX(0rem);
   }
-}
-
-input:checked + .slider:before {
-  -webkit-transform: translateX(26px);
-  -ms-transform: translateX(26px);
-  transform: translateX(26px);
-}
-
-/* Rounded sliders */
-.slider.round {
-  border-radius: 20px;
-}
-
-.slider.round:before {
-  border-radius: 50%;
 }

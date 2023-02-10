@@ -14,7 +14,7 @@
       src='assets/images/location.svg'
       alt='|'
       class='location-logo'
-    />{{this.country.selectedCountry}}
+    />{{this.globalCountry}}
   </button>
 </span>
 
@@ -38,13 +38,18 @@
 
   <div class='d-flex flex-column justify-content-start'>
     {{#each this.countryList as |country|}}
-      <button
-        type='button'
-        id={{this.countryId country.countryName}}
-        class='country__name
-          {{if (eq this.country.selectedCountry country.countryCode) "active"}}'
-        {{on 'click' (fn this.selectCountry country.countryCode)}}
-      >{{country.countryName}}</button>
+      {{#unless (eq country.countryName 'India')}}
+        <button
+          type='button'
+          id={{this.countryId country.countryName}}
+          class='country__name
+            {{if
+              (eq this.country.selectedCountry country.countryCode)
+              "active"
+            }}'
+          {{on 'click' (fn this.selectCountry country.countryCode)}}
+        >{{country.countryName}}</button>
+      {{/unless}}
     {{/each}}
   </div>
 </div>

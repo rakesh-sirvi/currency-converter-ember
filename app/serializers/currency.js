@@ -24,7 +24,7 @@ export default class CurrencySerializer extends RESTSerializer {
       code: currency,
       rate: payload.rates[currency],
       description: currencySymbols[currency],
-      img: getCountryFlag(currency),
+      // img: getCountryFlag(currency),
     }));
 
     return super.normalizeResponse(store, model, { currencies }, ...rest);

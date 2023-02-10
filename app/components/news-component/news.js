@@ -38,7 +38,6 @@ export default class NewsComponentNewsComponent extends Component {
       this.newsData = news;
       this.fetchState = { loading: false, error: '' };
     } catch (err) {
-      console.log(err);
       this.fetchState = { loading: false, error: 'something went wrong!' };
     }
   }

@@ -6,7 +6,7 @@ import { inject as service } from '@ember/service';
 export default class SidebarComponent extends Component {
   @service country;
 
-  @tracked sidebarWidth = '0';
+  @tracked sidebarWidth = 0;
 
   @tracked searchText = '';
 
@@ -36,10 +36,15 @@ export default class SidebarComponent extends Component {
       .sort();
   }
 
+  get globalCountry() {
+    return this.country.availableCountries[this.country.selectedCountry]
+      .countryName;
+  }
+
   @action
   toggleNav() {
     this.searchText = '';
-    if (this.sidebarWidth) {
+    if (this.sidebarWidth !== 0) {
       this.sidebarWidth = 0;
       // const mainBody = document.querySelector('#main');
       // mainBody.style.backgroundColor = 'rgba(0,0,0,0.4)';
