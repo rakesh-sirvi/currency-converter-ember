@@ -7,7 +7,7 @@
     aria-controls='navbarToggleExternalContent'
     aria-expanded='false'
     aria-label='Toggle navigation'
-    {{on 'click' this.toggleNav}}
+    {{on 'click' @toggleNav}}
   >
     {{! <span class='navbar-toggler-icon'></span> }}
     <img
@@ -18,7 +18,7 @@
   </button>
 </span>
 
-<div class='sidebar' style={{(concat 'width: ' this.sidebarWidth 'px')}}>
+<div class='sidebar' style={{(concat 'width: ' @sidebarWidth 'px')}}>
   <div class='sidebar_top'>
     <label class='label' for='search_input'>Search</label>
     <input
@@ -32,16 +32,17 @@
     <button
       type='button'
       class='close_btn'
-      {{on 'click' this.toggleNav}}
+      id="close-button"
+      {{on 'click' @toggleNav}}
     >&times;</button>
   </div>
 
   <div class='d-flex flex-column justify-content-start'>
     {{#each this.countryList as |country|}}
-      {{#unless (eq country.countryName 'India')}}
+      {{#if (not (eq country.countryName 'India'))}}
         <button
           type='button'
-          id={{this.countryId country.countryName}}
+          id={{@countryId country.countryName}}
           class='country__name
             {{if
               (eq this.country.selectedCountry country.countryCode)
@@ -49,7 +50,7 @@
             }}'
           {{on 'click' (fn this.selectCountry country.countryCode)}}
         >{{country.countryName}}</button>
-      {{/unless}}
+      {{/if}}
     {{/each}}
   </div>
 </div>
