@@ -1,8 +1,8 @@
 import RESTSerializer from '@ember-data/serializer/rest';
 import currencySymbols from 'ember-app/utils/symbols';
-import { countries as countriesList } from 'ember-app/utils/countries';
 
 /**
+import { countries as countriesList } from 'ember-app/utils/countries';
 const getCountryFlag = (currency) => {
   const country = countriesList.filter(
     ({ currencyCode }) => currencyCode === currency

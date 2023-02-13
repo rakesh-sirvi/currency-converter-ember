@@ -2,11 +2,12 @@
 
 <div class='theme-{{this.theme}}'>
   <nav class='navbar sticky-top justify-content-between'>
-    <div class='container-fluid navbar-content' {{on "keydown" this.onKeyPress}}>
+    <div class='container-fluid navbar-content'>
       <Sidebar
         @countryId={{this.countryId}}
         @sidebarWidth={{this.sidebarWidth}}
         @toggleNav={{this.toggleNav}}
+        @onKeyPress={{this.onKeyPress}}
       />
       <img src='assets/images/logo.png' alt='Currency' class='logo' />
       <div class='d-flex justify-content-center align-items-center'>
@@ -23,6 +24,7 @@
     </div>
   </nav>
 
+  {{! template-lint-disable no-invalid-interactive }}
   <div class='main' {{on "click" this.onClickWhenSidebarOpen}}>
     <div class='container py-3'>
       <div class='row mb-4'>
@@ -42,6 +44,7 @@
       </div>
     </div>
   </div>
+  {{! template-lint-disable no-invalid-interactive }}
 </div>
 
 {{outlet}}

@@ -8,6 +8,7 @@
     aria-expanded='false'
     aria-label='Toggle navigation'
     {{on 'click' @toggleNav}}
+    {{on "keyup" @onKeyPress}}
   >
     {{! <span class='navbar-toggler-icon'></span> }}
     <img
