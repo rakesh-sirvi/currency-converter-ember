@@ -28,12 +28,7 @@ export default class NewsComponentNewsComponent extends Component {
     this.fetchState = { loading: true, error: '' };
     try {
       const news = await this.store.query('news', {
-        originalImg: true,
-        cc: this.country,
-        headlineCount: 10,
-        textDecorations: true,
-        safeSearch: 'Moderate',
-        textFormat: 'Raw',
+        locale: this.country.toLowerCase(),
       });
       this.newsData = news;
       this.fetchState = { loading: false, error: '' };
