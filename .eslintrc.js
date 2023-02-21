@@ -26,6 +26,7 @@ module.exports = {
         endOfLine: 'auto',
       },
     ],
+    'ember/no-computed-properties-in-native-classes': 'off',
   },
   overrides: [
     // node files

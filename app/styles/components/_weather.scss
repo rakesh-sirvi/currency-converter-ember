@@ -5,16 +5,11 @@
   position: relative;
   backdrop-filter: blur(10px) !important;
   -webkit-backdrop-filter: blur(10px) !important;
-
-  @include themify($themes) {
-    background: themed('glassEffect') !important;
-    color: themed('sidebarText');
-    border: 1px solid themed('sidebarText');
-  }
+  background-image: linear-gradient(to right, #c1c161 0%, #c1c161 0%, #d4d4b1 100%);
 
   .country_name {
     position: absolute;
-    margin-top: -30px;
+    margin-top: -40px;
     margin-left: 10px;
   }
 
@@ -22,7 +17,11 @@
     position: absolute;
     right: 0;
     margin-right: 10px;
-    margin-top: -30px;
+    margin-top: -40px;
+  }
+
+  .card-body {
+    margin-top: 4rem !important;
   }
 
   .parameter {
@@ -52,9 +51,9 @@
 
     .convertTemp {
       outline: 0;
-      padding: 1px 7px;
+      padding: 0px 8px 0px 5px;
       margin-top: -4.6px;
-      border: none;
+      border: 1px solid;
       border-radius: 50%;
       font-size: 1.5rem;
       position: absolute;
@@ -64,13 +63,6 @@
 }
 
 .tabs {
-  h6 {
-    @include themify($themes) {
-      background: themed('glassEffect') !important;
-      color: themed('sidebarText');
-    }
-  }
-
   .tab__options {
     overflow-x: scroll;
     -ms-overflow-style: none; /* IE and Edge */
@@ -82,7 +74,6 @@
   }
 
   .option {
-    font-size: 0.9rem;
     background: none;
     border: none;
     padding: 0;
@@ -92,6 +83,10 @@
   .font-sm {
     font-size: 0.8rem;
     text-align: center;
+  }
+
+  .rotate {
+    transform: rotate(-20deg);
   }
 
   .overflow-auto {

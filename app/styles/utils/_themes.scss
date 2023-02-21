@@ -1,7 +1,10 @@
 $themes: (
   light: (
+    mainBackground: linear-gradient(60deg, #abecd6 0%, #fbed96 100%),
+    invertedMainBackground: linear-gradient(to right, #434343 0%, black 100%),
+    sidebarBackgound: linear-gradient(to top, lightgrey 0%, lightgrey 1%, #e0e0e0 26%, #efefef 48%, #d9d9d9 75%, #bcbcbc 100%),
     toggleBackground: #444352,
-    toggleSlider: #ccc,
+    toggleSlider: #444352,
     text: #444352,
     background: #f8f9fa,
     sidebarText: #212529,
@@ -11,8 +14,11 @@ $themes: (
     currencySwitch: "black"
   ),
   dark: (
+    mainBackground: linear-gradient(to right, #434343 0%, black 100%),
+    invertedMainBackground: linear-gradient(60deg, #abecd6 0%, #fbed96 100%),
+    sidebarBackgound: linear-gradient(60deg, #29323c 0%, #485563 100%),
     toggleBackground: #ccc,
-    toggleSlider: #444352,
+    toggleSlider: #aaa,
     text: #ccc,
     background: #212529,
     sidebarText: #f8f9fa,

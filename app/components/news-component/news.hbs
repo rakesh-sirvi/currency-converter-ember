@@ -1,4 +1,4 @@
-<div class='news-container' {{did-update this._getNewsData this.country}}>
+<div class='news-container card' {{did-update this._getNewsData this.country}}>
   {{#if (or this.fetchState.loading this.fetchState.error)}}
     {{#if this.fetchState.loading}}
       <LoadingSpinner class='d-flex justify-content-center my-5' />

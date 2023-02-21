@@ -1,9 +1,6 @@
 .news-container {
-  @include themify($themes) {
-    background: themed('background');
-    color: themed('text');
-    border: 1px solid themed('sidebarText');
-  }
+  background-image: linear-gradient(to top, #0ba360 0%, #3cba92 100%);
+  
   display: flex;
   flex-direction: column;
   height: 800px;

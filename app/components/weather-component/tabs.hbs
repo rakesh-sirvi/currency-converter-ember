@@ -6,36 +6,45 @@
   <div class='tab__options d-flex flex-row flex-nowrap mb-2'>
     <button
       type='button'
-      class='option me-2 text-muted
-        {{if
-          (eq this.currentOption "temperature")
-          "border-bottom border-warning border-2 fw-bold"
-        }}'
+      class='option'
       {{on 'click' (fn this.changeCurrentOption 'temperature')}}
     >
-      Temperature
+      <span
+        class='badge bg-{{if
+            (eq this.currentOption "temperature")
+            "success"
+            "secondary"
+          }}
+          me-2 fw-normal'
+      >Temperature</span>
     </button>
     <button
       type='button'
-      class='option me-2 text-muted
-        {{if
-          (eq this.currentOption "precipitation")
-          "border-bottom border-warning border-2 fw-bold"
-        }}'
+      class='option'
       {{on 'click' (fn this.changeCurrentOption 'precipitation')}}
     >
-      Precipitation
+      <span
+        class='badge bg-{{if
+            (eq this.currentOption "precipitation")
+            "success"
+            "secondary"
+          }}
+          me-2 fw-normal'
+      >Precipitation</span>
     </button>
     <button
       type='button'
-      class='option text-muted
-        {{if
-          (eq this.currentOption "relative_humidity")
-          " border-bottom border-bottom border-warning border-2 fw-bold"
-        }}'
+      class='option'
       {{on 'click' (fn this.changeCurrentOption 'relative_humidity')}}
     >
-      Relative Humidity
+      <span
+        class='badge bg-{{if
+            (eq this.currentOption "relative_humidity")
+            "success"
+            "secondary"
+          }} fw-normal'
+      >Relative Humidity</span>
+
     </button>
   </div>
 
@@ -46,10 +55,12 @@
         <h6 class='fw-bold font-sm'>Max (°C)</h6>
       </div>
       {{#each this.minMaxTemps as |temp|}}
-        <div class='d-flex flex-column justify-content-start me-2 p-1'>
+        <div
+          class='d-flex flex-column justify-content-start me-2 p-1 glassEffect'
+        >
           <h6 class='font-sm'>{{temp.min}}</h6>
           <h6 class='font-sm'>{{temp.max}}</h6>
-          <h6 class='text-muted font-sm'>{{temp.day}}</h6>
+          <h6 class='font-sm'>{{temp.day}}</h6>
         </div>
       {{/each}}
     </div>
@@ -59,9 +70,11 @@
     <div class='d-flex flex-row flex-nowrap overflow-auto'>
       <h6 class='fw-bold me-2 font-sm'>Level (mm)</h6>
       {{#each this.precipitation as |p|}}
-        <div class='d-flex flex-column justify-content-start me-2 p-1'>
+        <div
+          class='d-flex flex-column justify-content-start me-2 p-1 glassEffect'
+        >
           <h6 class='font-sm'>{{p.val}}</h6>
-          <h6 class='text-muted font-sm'>{{p.time}}</h6>
+          <h6 class='rotate font-sm'>{{p.time}}</h6>
         </div>
       {{/each}}
     </div>
@@ -71,9 +84,11 @@
     <div class='d-flex flex-row flex-nowrap overflow-auto'>
       <h6 class='fw-bold me-2 font-sm'> (%)</h6>
       {{#each this.relativeHumidity as |rh|}}
-        <div class='d-flex flex-column justify-content-start me-2 p-1'>
+        <div
+          class='d-flex flex-column justify-content-start me-2 p-1 glassEffect'
+        >
           <h6 class='font-sm'>{{rh.val}}</h6>
-          <h6 class='text-muted font-sm'>{{rh.time}}</h6>
+          <h6 class='rotate font-sm'>{{rh.time}}</h6>
         </div>
       {{/each}}
     </div>
